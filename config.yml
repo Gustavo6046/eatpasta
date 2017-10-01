@@ -1,0 +1,48 @@
+---
+
+websites:
+# -   name: pastebin
+#     archiveURL: https://pastebin.com/archive
+#     filename:
+#         expr: "([a-zA-Z0-9]{8})$" # must have capturing groups
+#         index: 0
+
+#     cooldowns:
+#         noNewPaste: 180
+#         newPaste: 30
+#         perLink: 5
+
+#     individualPaste:
+#         type: "link" # can be either of "link" or "element"
+#         selector: "table[class=\"maintable\"] a"
+
+#     pathToContent:
+#     -   contentQuery: ".buttonsm:contains('raw')"
+#         queryType: "link" # can be either of "link" or "element"
+#         queryIndex: 0
+
+-   name: slexy
+    archiveURL: http://slexy.org/recent
+    filename:
+        expr: /([a-zA-Z0-9]+)$
+        index: 0
+
+    cooldowns:
+        noNewPaste: 180
+        newPaste: 30
+        perLink: 4
+
+    individualPaste:
+        type: link # can be either of "link" or "element"
+        selector: a[href^="/view/"]
+
+    pathToContent:
+    -   contentQuery: div[class="main"] table tbody tr td a[href^="/raw/"]
+        queryType: link
+        queryIndex: 0
+
+
+globalConfig:
+    desiredRegex: "((?:\\d{1:3}\\.){3}\\d{1:3})"
+
+...
